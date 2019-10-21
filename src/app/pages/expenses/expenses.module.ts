@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { ExpensesPage } from './expenses.page';
 
+import { BrMaskerModule } from 'br-mask';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,8 +21,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    BrMaskerModule
   ],
   declarations: [ExpensesPage]
 })
-export class ExpensesPageModule {}
+export class ExpensesPageModule { }

@@ -40,6 +40,15 @@
   margin: 40px 28px 10px 28px;
 }
 
+.expense-input-around > span {
+  position: absolute;
+  z-index: 3;
+  margin-top: 15px;
+  margin-left: 1px;
+  font-size: 23px;
+  font-weight: bold;
+}
+
 .expense-input {
   border: 1px solid rgb(21, 33, 45) !important;
   border-radius: 10px !important;
@@ -73,4 +82,10 @@
   height: 70px;
   background: rgb(31, 46, 62);
   font-size: 15px;
+}
+
+.expense-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
 }

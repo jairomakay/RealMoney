@@ -17,7 +17,10 @@
     <ion-row>
       <ion-col size="12">
         <div class="expense-input-around">
-          <ion-input class="expense-input" type="tel"></ion-input>
+          <span>R$</span>
+          <ion-input class="expense-input" type="text"
+            [brmasker]="{money: true, thousand: '.',  decimalCaracter: ',', decimal: '2'}">
+          </ion-input>
         </div>
       </ion-col>
     </ion-row>
@@ -29,7 +32,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="12" text-center>
+      <ion-col class="expense-actions">
         <ion-fab-button color="grey">
           <ion-icon size="large" name="camera"></ion-icon>
         </ion-fab-button>

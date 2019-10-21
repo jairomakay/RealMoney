@@ -1,63 +1,52 @@
-import { Component, OnInit } from "@angular/core";
-import { ActionSheetController } from "@ionic/angular";
+import { Component, OnInit } from '@angular/core';
+import { ActionSheetController } from '@ionic/angular';
+import { DataLocalService } from '../../services/data-local.service';
+import { Category } from '../../models/category.model';
 
 @Component({
-  selector: "app-expenses",
-  templateUrl: "./expenses.page.html",
-  styleUrls: ["./expenses.page.scss"]
+  selector: 'app-expenses',
+  templateUrl: './expenses.page.html',
+  styleUrls: ['./expenses.page.scss']
 })
 export class ExpensesPage implements OnInit {
-  constructor(private actionSheetCtl: ActionSheetController) {}
 
-  categorySelected: string = "Categoria";
+  // valor inical da categoria
+  categorySelected = 'Categoria';
+  componentCategory;
 
-  ngOnInit() {}
+
+  constructor(private actionSheetCtl: ActionSheetController, private dataLocal: DataLocalService) {
+
+  }
+
+  ngOnInit() {
+    this.dataLocal.saveCategory('Casa');
+    this.dataLocal.saveCategory('Mercado');
+    this.dataLocal.saveCategory('Carro');
+
+    this.componentCategory = this.initializateCategorys();
+  }
 
   async onClickCategory() {
     const actionSheet = await this.actionSheetCtl.create({
-      header: "Categorias",
-      buttons: [
-        {
-          text: "Delete",
-          role: "destructive",
-          icon: "trash",
-          handler: () => {
-            console.log("Delete clicked");
-            this.categorySelected = "Delete";
-          }
-        },
-        {
-          text: "Share",
-          icon: "share",
-          handler: () => {
-            console.log("Share clicked");
-          }
-        },
-        {
-          text: "Play (open modal)",
-          icon: "arrow-dropright-circle",
-          handler: () => {
-            console.log("Play clicked");
-            this.categorySelected = "Compartilhado";
-          }
-        },
-        {
-          text: "Favorite",
-          icon: "heart",
-          handler: () => {
-            console.log("Favorite clicked");
-          }
-        },
-        {
-          text: "Cancel",
-          icon: "close",
-          role: "cancel",
-          handler: () => {
-            console.log("Cancel clicked");
-          }
-        }
-      ]
+      header: 'Categorias',
+      buttons: this.componentCategory
     });
     await actionSheet.present();
+  }
+
+  initializateCategorys() {
+    const categorys: Category[] = this.dataLocal.categorys;
+
+    const componentCategory = categorys.map(cat => {
+      return {
+        text: cat.name,
+        handler: () => {
+          this.categorySelected = cat.name;
+        }
+      }
+    });
+
+    return componentCategory;
   }
 }
