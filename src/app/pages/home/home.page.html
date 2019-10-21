@@ -1,0 +1,69 @@
+<ion-header no-border>
+  <ion-card class="money-card" mode="md">
+    <ion-card-header>
+      <ion-row>
+        <ion-col size="12">
+          <ion-card-title class="money-title">Saldo Atual</ion-card-title>
+        </ion-col>
+        <ion-col>
+          <ion-icon
+            (click)="presentPopover($event)"
+            class="money-menu"
+            size="large"
+            color="light"
+            name="more"
+          ></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content class="content-money">
+      <span>R$2.100,45</span>
+    </ion-card-content>
+  </ion-card>
+</ion-header>
+
+<!-- conteudo da home -->
+<ion-content color="dark">
+  <!-- card de categorias -->
+  <ion-card class="money-card-content" mode="md">
+    <ion-card-content class="content-money">
+      <ion-row>
+        <ion-col>
+          <ion-label>Categoria</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          grafico de pizza
+        </ion-col>
+        <ion-col size="6">
+          <span>Alimentação R$200,00</span>
+          <span>Combustivel R$150,00</span>
+          <span>Aluguel R$1.000,00</span>
+          <span>Lazer R$200,00</span>
+          <span>Outros R$100,00</span>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <!-- fim -->
+  <!-- card de ultimos lançamentos -->
+  <ion-card class="money-card-content" mode="md">
+    <ion-card-content class="content-money">
+      <ion-row>
+        <ion-col>
+          <ion-label>Últimos lançamentos</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <span>padaria R$10,00</span>
+          <span>mercado R$15,00</span>
+          <span>carro R$16,20</span>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <!-- fim -->
+</ion-content>

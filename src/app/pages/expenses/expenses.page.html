@@ -1,0 +1,50 @@
+<ion-app>
+  <ion-content color="dark" slot="fixed">
+    <ion-row>
+      <ion-col size="12" class="expense-label">
+        <ion-label>Saldo Atual</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div class="display-balance">
+          <span>
+            R$2.064,35
+          </span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div class="expense-input-around">
+          <ion-input class="expense-input" type="tel"></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div class="expense-category" (click)="onClickCategory()">
+          <span>{{ categorySelected }}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" text-center>
+        <ion-fab-button color="grey">
+          <ion-icon size="large" name="camera"></ion-icon>
+        </ion-fab-button>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar color="primary">
+      <ion-button slot="start" color="success" fill="outline">
+        Adicionar
+      </ion-button>
+      <ion-button slot="end" color="light" fill="outline">
+        Cancelar
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-app>

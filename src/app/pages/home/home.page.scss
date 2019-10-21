@@ -1,0 +1,50 @@
+.money-card {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 165px !important;
+  border-radius: 0 !important;
+  z-index: 0;
+
+  background: rgb(24, 153, 154) !important;
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 0%,
+    rgba(29, 94, 177, 1) 98%
+  ) !important;
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 0%,
+    rgba(29, 94, 177, 1) 98%
+  ) !important;
+  background: linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 0%,
+    rgba(29, 94, 177, 1) 98%
+  ) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#18999a",endColorstr="#1d5eb1",GradientType=1) !important;
+}
+
+.money-card-content {
+  margin-top: 15px;
+  background: rgb(46, 64, 83);
+}
+
+.money-menu {
+  position: absolute;
+  right: -13px;
+  top: -43px;
+}
+.money-title {
+  text-align: center !important;
+  font-size: 18px !important;
+  color: #fff !important;
+}
+
+.content-money {
+  text-align: center !important;
+}
+
+.content-money > span {
+  font-size: 37px !important;
+  color: #fff !important;
+}

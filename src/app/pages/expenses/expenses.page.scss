@@ -1,0 +1,76 @@
+.expense-label {
+  font-weight: bold;
+  margin-top: 35px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.display-balance {
+  text-align: center;
+  border: 1px solid rgb(6, 35, 20);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 15%;
+
+  background: rgb(24, 153, 154) !important;
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 0%,
+    rgba(29, 94, 177, 1) 98%
+  ) !important;
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 0%,
+    rgba(29, 94, 177, 1) 98%
+  ) !important;
+  background: linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 0%,
+    rgba(29, 94, 177, 1) 98%
+  ) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#18999a",endColorstr="#1d5eb1",GradientType=1) !important;
+}
+
+.display-balance > span {
+  color: aliceblue;
+  font-size: 30px;
+}
+
+.expense-input-around {
+  margin: 40px 28px 10px 28px;
+}
+
+.expense-input {
+  border: 1px solid rgb(21, 33, 45) !important;
+  border-radius: 10px !important;
+  padding-left: 25px !important;
+  font-size: 32px !important;
+  font-weight: bold;
+  background: rgb(46, 64, 83);
+}
+
+.expense-category {
+  border: 1px solid rgb(21, 33, 45);
+  border-radius: 10px;
+  background: rgb(46, 64, 83);
+  text-align: center;
+  margin: 5px 28px 10px 28px;
+  padding: 12px;
+}
+
+.expense-category > span {
+  font-size: 30px;
+  color: aliceblue;
+}
+
+.expense-category:hover {
+  background: rgb(31, 46, 62);
+}
+
+.expense-camera {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: rgb(31, 46, 62);
+  font-size: 15px;
+}
