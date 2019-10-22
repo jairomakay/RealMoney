@@ -7,19 +7,23 @@ import { Expense } from '../models/expense.model';
 })
 export class DataLocalService {
   public categorys: Category[] = [];
-  expenses: Expense[] = [];
+  public expenses: Expense[] = [];
 
   constructor(private storage: Storage) {
     this.initCategory();
+    this.initExpense();
   }
 
   async initCategory() {
     this.categorys = await this.storage.get('categorys') || [];
   }
 
-  saveCategory(name: string) {
-    const category = new Category(name);
-    const findCat = this.categorys.find(cat => cat.name === name);
+  async initExpense() {
+    this.expenses = await this.storage.get('expenses') || [];
+  }
+
+  saveCategory(category: Category) {
+    const findCat = this.categorys.find(cat => cat.name === category.name);
     // se existir a categoria não adiciona
     if (findCat) {
       return;
@@ -29,10 +33,10 @@ export class DataLocalService {
     this.storage.set('categorys', this.categorys);
   }
 
-  saveExpense(value: number, category: Category, image: string) {
-    const expense = new Expense(value, category, image);
+  saveExpense(expense: Expense) {
     this.expenses.unshift(expense);
     this.storage.set('expenses', this.expenses);
   }
+
 
 }
