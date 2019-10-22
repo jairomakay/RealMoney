@@ -45,15 +45,21 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="expense-actions">
+      <ion-col size="12">
+        <div class="expense-category">
+          <ion-textarea class="expense-text-area" [(ngModel)]="expense.description"
+            placeholder="Digite um descrição..."></ion-textarea>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="expense-actions" size="4">
         <ion-fab-button color="grey" (click)="onClickImage()">
           <ion-icon size="large" name="camera"></ion-icon>
         </ion-fab-button>
       </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <img *ngIf="expense.image" [src]="expense.image" />
+      <ion-col class="expense-actions" size="8">
+        <img *ngIf="expense.image" class="expense-image" [src]="expense.image" />
       </ion-col>
     </ion-row>
   </ion-content>

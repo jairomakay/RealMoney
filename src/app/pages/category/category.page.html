@@ -11,17 +11,37 @@
     <!-- nome da categoria -->
     <ion-row>
       <ion-col size="12">
-        <div class="expense-input-around">
-          <ion-input class="expense-input" [(ngModel)]="category.name" type="text" placeholder="nome"></ion-input>
+        <div class="category-input-around">
+          <ion-input class="category-input" [(ngModel)]="category.name" type="text" placeholder="nome"></ion-input>
         </div>
       </ion-col>
+    </ion-row>
+    <!-- fim -->
+    <!-- cor da categoria -->
+    <ion-row>
+      <ion-col size="12">
+        <div class="category-around" (click)="onClickViewColor()">
+          <span>Adicionar cor ...</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="viewColor" class="category-row-color">
+      <ion-list #theList inset="false" lines="full" class="noPadBottom">
+        <ion-grid>
+          <ion-row class="rowClass">
+            <ion-col size="2" class="colClass" *ngFor="let item of colorList; let i=index"
+              [style.background]="item.value" (click)="selectColor(item)">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
     </ion-row>
     <!-- fim -->
     <!-- porcentagem de desconto -->
     <ion-row *ngIf="category.type === 'entrada'">
       <ion-col size="12">
-        <div class="expense-input-around">
-          <ion-input class="expense-input" [(ngModel)]="category.percentage" type="tel"
+        <div class="category-input-around">
+          <ion-input class="category-input" [(ngModel)]="category.percentage" type="tel"
             placeholder="Porcentagem desconto"></ion-input>
         </div>
       </ion-col>

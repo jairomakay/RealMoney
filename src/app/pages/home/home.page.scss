@@ -48,3 +48,38 @@
   font-size: 37px !important;
   color: #fff !important;
 }
+
+.home-category {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.home-category > .home-category-title {
+  font-size: 25px;
+  color: #fff;
+  margin-top: -10px;
+}
+
+.home-grafic {
+  margin-top: -10px;
+  margin-left: -10px;
+  
+}
+
+.home-category-names {
+  display: flex;
+  flex-direction: column;
+
+   margin-top: -10px;
+}
+
+.home-category-names > span {
+  font-size: 14px;
+  color: #fff;
+}
+
+.home-category-names > span > b {
+  font-size: 14px;
+  margin-left: 5px;
+}

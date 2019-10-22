@@ -6,13 +6,8 @@
           <ion-card-title class="money-title">Saldo Atual</ion-card-title>
         </ion-col>
         <ion-col>
-          <ion-icon
-            (click)="presentPopover($event)"
-            class="money-menu"
-            size="large"
-            color="light"
-            name="more"
-          ></ion-icon>
+          <ion-icon (click)="presentPopover($event)" class="money-menu" size="large" color="light" name="more">
+          </ion-icon>
         </ion-col>
       </ion-row>
     </ion-card-header>
@@ -29,20 +24,17 @@
   <ion-card class="money-card-content" mode="md">
     <ion-card-content class="content-money">
       <ion-row>
-        <ion-col>
-          <ion-label>Categoria</ion-label>
+        <ion-col class="home-category">
+          <ion-label class="home-category-title">Categoria</ion-label>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="6">
-          grafico de pizza
+        <ion-col size="5">
+          <canvas class="home-grafic" #doughnutCanvas width="500" height="550"></canvas>
         </ion-col>
-        <ion-col size="6">
-          <span>Alimentação R$200,00</span>
-          <span>Combustivel R$150,00</span>
-          <span>Aluguel R$1.000,00</span>
-          <span>Lazer R$200,00</span>
-          <span>Outros R$100,00</span>
+        <ion-col size="7" class="home-category-names">
+          <span>Alimentação <b>R$200,00</b> </span>
+          <span>Combustivel <b>R$150,00</b></span>
         </ion-col>
       </ion-row>
     </ion-card-content>

@@ -11,11 +11,32 @@ import { DataLocalService } from '../../services/data-local.service';
 export class CategoryPage implements OnInit {
 
   category: Category = new Category();
+  viewColor = false;
+  // lista de corres
+  public colorList: any[] = [
+    { key: 'flame', value: '#e45a33', friendlyName: 'Flame' },
+    { key: 'orange', value: '#fa761e', friendlyName: 'Orange' },
+    { key: 'infrared', value: '#ef486e', friendlyName: 'Infrared' },
+    { key: 'male', value: '#4488ff', friendlyName: 'Male Color' },
+    { key: 'female', value: '#ff44aa', friendlyName: 'Female Color' },
+    { key: 'paleyellow', value: '#ffd165', friendlyName: 'Pale Yellow' },
+    { key: 'gargoylegas', value: '#fde84e', friendlyName: 'Gargoyle Gas' },
+    { key: 'androidgreen', value: '#9ac53e', friendlyName: 'Android Green' },
+    { key: 'carribeangreen', value: '#05d59e', friendlyName: 'Carribean Green' },
+    { key: 'bluejeans', value: '#5bbfea', friendlyName: 'Blue Jeans' },
+    { key: 'cyancornflower', value: '#1089b1', friendlyName: 'Cyan Cornflower' },
+    { key: 'warmblack', value: '#06394a', friendlyName: 'Warm Black' },
+  ];
 
-  constructor(private toastController: ToastController, private dataLocal: DataLocalService, private navCtrl: NavController) { }
+  constructor(private toastController: ToastController,
+    // tslint:disable-next-line:align
+    private dataLocal: DataLocalService,
+    // tslint:disable-next-line: align
+    private navCtrl: NavController) { }
 
   ngOnInit() {
     this.category = new Category();
+    this.viewColor = false;
   }
 
   selectBalance(event) {
@@ -29,6 +50,10 @@ export class CategoryPage implements OnInit {
       this.showNotification('O nome é obrigatório', false);
       return;
     }
+    if (!this.category.color) {
+      this.showNotification('Adicione uma cor para a categoria!', false);
+      return;
+    }
     if (this.category.type === 'entrada' && !this.category.percentage) {
       this.showNotification('Adicione a porcentagem referente ao desconto de entrada!', false);
       return;
@@ -37,6 +62,15 @@ export class CategoryPage implements OnInit {
     this.dataLocal.saveCategory(this.category);
     this.showNotification('Categoria salva com sucesso!', true);
     this.navCtrl.navigateForward('/home');
+  }
+
+  onClickViewColor() {
+    this.viewColor = true;
+  }
+
+  selectColor(color) {
+    console.log('cor', color);
+    this.category.color = color.value;
   }
 
   private async showNotification(message: string, type: boolean) {
@@ -57,5 +91,8 @@ export class CategoryPage implements OnInit {
     });
     toast.present();
   }
+
+
+
 
 }

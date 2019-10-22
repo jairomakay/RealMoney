@@ -1,12 +1,58 @@
 
-.expense-input-around {
+.category-input-around {
   margin: 5px 28px 5px 28px;
 }
-.expense-input {
+.category-input {
   border: 1px solid rgb(21, 33, 45) !important;
   border-radius: 10px !important;
   padding-left: 20px !important;
   font-size: 21px !important;
   font-weight: bold;
   background: rgb(46, 64, 83);
+}
+
+.category-around {
+  border: 1px solid rgb(21, 33, 45);
+  border-radius: 10px;
+  background: rgb(46, 64, 83);
+  font-size: 21px !important;
+  font-weight: bold;
+  margin: -1px 28px 1px 28px;
+  padding: 12px 12px 12px 28px;
+  color: #969fa8;
+}
+
+
+ion-grid{
+  --ion-grid-padding: 6px;
+}
+
+.noPadBottom{
+  margin-bottom: 0px;
+}
+
+.category-row-color {
+  margin-left: 13px;
+}
+
+.rowClass {
+  max-width: 320px;
+  min-height: 80px;
+  padding: 6px;
+}
+
+.colClass{
+  border: 2px solid white;
+  text-align: center;
+  font-weight: bold;
+  padding: 12px;
+  //margin: 2px;
+  transition: opacity, border 0.5s;
+}
+
+.colClass:hover{
+  border: 1px solid black;
+  opacity: 0.9;
+  cursor: pointer;
+  transition: opacity, border 0.5s;
 }
