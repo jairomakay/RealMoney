@@ -18,8 +18,16 @@
       <ion-col size="12">
         <div class="expense-input-around">
           <span>R$</span>
-          <ion-input class="expense-input" type="text"
-            [brmasker]="{money: true, thousand: '.',  decimalCaracter: ',', decimal: '2'}">
+          <ion-input
+            class="expense-input"
+            type="tel"
+            [brmasker]="{
+              money: true,
+              thousand: '.',
+              decimalCaracter: ',',
+              decimal: '2'
+            }"
+          >
           </ion-input>
         </div>
       </ion-col>
@@ -42,10 +50,23 @@
 
   <ion-footer>
     <ion-toolbar color="primary">
-      <ion-button slot="start" color="success" fill="outline">
+      <ion-button
+        slot="start"
+        shape="round"
+        size="large"
+        color="success"
+        fill="outline"
+      >
         Adicionar
       </ion-button>
-      <ion-button slot="end" color="light" fill="outline">
+      <ion-button
+        size="large"
+        shape="round"
+        [routerLink]="['/home']"
+        slot="end"
+        color="light"
+        fill="outline"
+      >
         Cancelar
       </ion-button>
     </ion-toolbar>
