@@ -1,9 +1,10 @@
+import { Category } from './category.model';
 export class CategoryGroupValue {
-  public name: string;
+  public category: Category;
   public value: number;
 
-  constructor(name?: string, value?: number) {
-    this.name = name;
+  constructor(category?: Category, value?: number) {
+    this.category = category;
     this.value = value;
   }
 }

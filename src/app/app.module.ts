@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicStorageModule } from '@ionic/storage';
@@ -19,6 +19,10 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
 // camera
 import { Camera } from '@ionic-native/camera/ngx';
 
+import localept from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localept, 'pt');
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -36,6 +40,7 @@ import { Camera } from '@ionic-native/camera/ngx';
     SQLitePorter,
     SQLite,
     Camera,
+    { provide: LOCALE_ID, useValue: 'pt' },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

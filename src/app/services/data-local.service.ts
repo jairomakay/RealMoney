@@ -9,7 +9,8 @@ import { CategoryGroupValue } from '../models/category-group-value.model';
 export class DataLocalService {
   public categorys: Category[] = [];
   public expenses: Expense[] = [];
-  public groupcategoryValue: CategoryGroupValue[] = [];
+  public groupCategoryValue: CategoryGroupValue[] = [];
+  public lastExpenses: Expense[] = [];
 
   constructor(private storage: Storage) {
     this.initCategory();
@@ -34,19 +35,28 @@ export class DataLocalService {
     this.categorys.unshift(category);
     this.storage.set('categorys', this.categorys);
   }
-
+  /*
+  salva despesas
+  */
+  saveExpense(expense: Expense) {
+    this.expenses.unshift(expense);
+    this.storage.set('expenses', this.expenses);
+  }
+  /*
+    Retorna os gastos ordenados por categorias
+  */
   async getCategoryByGroupSumValue() {
     // carrega lista de despesas
     await this.initExpense();
     // novo array de grupos
-    this.groupcategoryValue = [];
+    this.groupCategoryValue = [];
 
     const reduced = this.expenses.reduce((m, d) => {
-      if (!m[d.category]) {
-        m[d.category] = { ...d, count: 1 };
+      if (!m[d.category.name]) {
+        m[d.category.name] = { ...d };
         return m;
       }
-      m[d.category].value += d.value;
+      m[d.category.name].value += d.value;
       return m;
     }, {});
 
@@ -54,12 +64,25 @@ export class DataLocalService {
       return reduced[k];
     });
 
-    console.log('despesas calculadas', result);
+    this.groupCategoryValue = result;
   }
 
-  saveExpense(expense: Expense) {
-    this.expenses.unshift(expense);
-    this.storage.set('expenses', this.expenses);
+  async getExpenses() {
+    await this.initExpense();
+  }
+
+  async getExpensesOrderDate() {
+    // carrega lista de despesas
+    await this.initExpense();
+
+    this.lastExpenses = [];
+
+    this.lastExpenses = this.expenses.sort((a: Expense, b: Expense) => {
+      const one = new Date(a.date);
+      const two = new Date(b.date);
+      return one > two ? -1 : one < two ? 1 : 0;
+    });
+
   }
 
 

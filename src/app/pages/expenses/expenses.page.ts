@@ -13,7 +13,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 export class ExpensesPage implements OnInit {
 
   // valor inical da categoria
-  categorySelected = 'Categoria';
+  categorySelected: Category = new Category('Categoria');
   // instancia de documento
   componentCategory;
   expense: Expense = new Expense();
@@ -63,7 +63,7 @@ export class ExpensesPage implements OnInit {
       return {
         text: cat.name,
         handler: () => {
-          this.categorySelected = cat.name;
+          this.categorySelected = cat;
         }
       };
     });
@@ -76,7 +76,7 @@ export class ExpensesPage implements OnInit {
       this.showNotification('Digite o valor da despesa!', false);
       return;
     }
-    if (this.categorySelected === 'Categoria') {
+    if (this.categorySelected.name === 'Categoria') {
       this.showNotification('Selecione a categoria!', false);
       return;
     }
@@ -86,9 +86,8 @@ export class ExpensesPage implements OnInit {
     }
 
     // adicona os valores
-    this.expense.value = parseFloat(this.value.replace(',', '.'));
+    this.expense.value = parseFloat(this.value.replace('.', '').replace(',', '.'));
     this.expense.category = this.categorySelected;
-
     this.dataLocal.saveExpense(this.expense);
     this.navCtl.navigateForward('/home');
     this.showNotification('Despesa salva com sucesso!', true);

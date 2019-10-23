@@ -71,12 +71,22 @@
   display: flex;
   flex-direction: column;
 
-   margin-top: -10px;
+   margin-top: -40px;
 }
 
 .home-category-names > span {
+  display: flex;
+  flex-direction: row;
+
   font-size: 14px;
   color: #fff;
+}
+
+.home-color-category {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 4px;
 }
 
 .home-category-names > span > b {

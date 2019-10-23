@@ -10,17 +10,17 @@ import { DataLocalService } from '../../services/data-local.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   @ViewChild('doughnutCanvas', { static: true }) doughnutCanvas: ElementRef;
-
+  // variavel dos charts
   doughnutChart: Chart;
 
-  constructor(private popoverCtl: PopoverController, private dataLocal: DataLocalService) { }
+  constructor(private popoverCtl: PopoverController, public dataLocal: DataLocalService) { }
 
-  ngOnInit() {
+  ionViewWillEnter() {
+    this.listCategoryGroup();
     this.graficPizza();
-    this.dataLocal.getCategoryByGroupSumValue();
   }
 
   async presentPopover(event) {
@@ -33,19 +33,46 @@ export class HomePage implements OnInit {
     return await popover.present();
   }
 
-  graficPizza() {
+  // cria o grafico de pizza de gastos por categoria
+  async graficPizza() {
+
+    let backgroundColor = [];
+    let data = [];
+    // carrega novamente os dados
+    await this.dataLocal.getCategoryByGroupSumValue();
+
+    backgroundColor = this.dataLocal.groupCategoryValue.map(gc => {
+      return gc.category.color;
+    });
+
+    data = this.dataLocal.groupCategoryValue.map(gc => {
+      return gc.value;
+    });
+
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: 'doughnut',
       data: {
         datasets: [
           {
-            label: 'Population (millions)',
-            backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f', '#e8c3b9', '#c45850'],
-            data: [2478, 5267, 734, 784, 433]
+            backgroundColor,
+            data
           }
         ]
+      },
+      options: {
+        responsive: true,
       }
     });
+  }
+
+  // lista categoria agrupadas 
+  async listCategoryGroup() {
+    await this.dataLocal.getCategoryByGroupSumValue();
+  }
+
+  async listExpensesLast() {
+    await this.dataLocal.getExpenses();
+    console.log(this.dataLocal.expenses);
   }
 
 
