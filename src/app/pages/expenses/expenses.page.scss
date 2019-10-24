@@ -43,16 +43,16 @@
 .expense-input-around > span {
   position: absolute;
   z-index: 3;
-  margin-top: 15px;
+  margin-top: 9px;
   margin-left: 3px;
-  font-size: 23px;
+  font-size: 33px;
   font-weight: bold;
 }
 
 .expense-input {
   border: 1px solid rgb(21, 33, 45) !important;
   border-radius: 10px !important;
-  padding-left: 25px !important;
+  padding-left: 60px !important;
   font-size: 30px !important;
   background: rgb(46, 64, 83);
 }
@@ -103,7 +103,6 @@
   border-radius: 10px;
   height: 127px;
 }
-
 
 .expense-text-area {
   margin-bottom: -14px;

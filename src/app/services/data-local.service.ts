@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
-import { Category } from '../models/category.model';
-import { Expense } from '../models/expense.model';
-import { CategoryGroupValue } from '../models/category-group-value.model';
+import { Injectable } from "@angular/core";
+import { Storage } from "@ionic/storage";
+import { Category } from "../models/category.model";
+import { Expense } from "../models/expense.model";
+import { CategoryGroupValue } from "../models/category-group-value.model";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DataLocalService {
   public categorys: Category[] = [];
   public expenses: Expense[] = [];
   public groupCategoryValue: CategoryGroupValue[] = [];
   public lastExpenses: Expense[] = [];
+  public saldo: Number = 0;
 
   constructor(private storage: Storage) {
     this.initCategory();
@@ -18,11 +19,11 @@ export class DataLocalService {
   }
 
   async initCategory() {
-    this.categorys = await this.storage.get('categorys') || [];
+    this.categorys = (await this.storage.get("categorys")) || [];
   }
 
   async initExpense() {
-    this.expenses = await this.storage.get('expenses') || [];
+    this.expenses = (await this.storage.get("expenses")) || [];
   }
 
   saveCategory(category: Category) {
@@ -33,14 +34,14 @@ export class DataLocalService {
     }
 
     this.categorys.unshift(category);
-    this.storage.set('categorys', this.categorys);
+    this.storage.set("categorys", this.categorys);
   }
   /*
   salva despesas
   */
   saveExpense(expense: Expense) {
     this.expenses.unshift(expense);
-    this.storage.set('expenses', this.expenses);
+    this.storage.set("expenses", this.expenses);
   }
   /*
     Retorna os gastos ordenados por categorias
@@ -60,7 +61,7 @@ export class DataLocalService {
       return m;
     }, {});
 
-    const result = Object.keys(reduced).map((k) => {
+    const result = Object.keys(reduced).map(k => {
       return reduced[k];
     });
 
@@ -82,8 +83,25 @@ export class DataLocalService {
       const two = new Date(b.date);
       return one > two ? -1 : one < two ? 1 : 0;
     });
-
   }
 
+  // faz calculo do saldo de despesas
+  async calcSaldoExpenses() {
+    await this.initExpense();
 
+    console.log("saldo da conta", this.expenses);
+
+    let saldo = this.expenses.reduce((saldo, expense) => {
+      if (expense.category.type == "entrada") {
+        saldo = saldo + expense.value;
+      } else if (expense.category.type == "saida") {
+        saldo = saldo - expense.value;
+      }
+
+      return saldo;
+    }, 0);
+
+    console.log("saldo da conta", saldo);
+    this.saldo = saldo;
+  }
 }
