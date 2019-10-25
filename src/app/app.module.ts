@@ -1,27 +1,27 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-import { IonicStorageModule } from '@ionic/storage';
+import { NgModule, LOCALE_ID } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { RouteReuseStrategy } from "@angular/router";
+import { IonicStorageModule } from "@ionic/storage";
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { ComponentsModule } from './components/components.module';
+import { AppComponent } from "./app.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { ComponentsModule } from "./components/components.module";
 
 // mascara dos campos
-import { BrMaskerModule } from 'br-mask';
+import { BrMaskerModule } from "br-mask";
 // banco local sqlite
-import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
-import { SQLite } from '@ionic-native/sqlite/ngx';
+import { SQLitePorter } from "@ionic-native/sqlite-porter/ngx";
+import { SQLite } from "@ionic-native/sqlite/ngx";
 // camera
-import { Camera } from '@ionic-native/camera/ngx';
+import { Camera } from "@ionic-native/camera/ngx";
 
-import localept from '@angular/common/locales/pt';
-import { registerLocaleData } from '@angular/common';
-registerLocaleData(localept, 'pt');
+import localept from "@angular/common/locales/pt";
+import { registerLocaleData } from "@angular/common";
+registerLocaleData(localept, "pt");
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,9 +40,9 @@ registerLocaleData(localept, 'pt');
     SQLitePorter,
     SQLite,
     Camera,
-    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: LOCALE_ID, useValue: "pt" },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

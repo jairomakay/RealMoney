@@ -46,12 +46,19 @@ export class ExpensesPage {
   ionViewWillEnter() {
     this.createComponentSheet();
     this.expense = new Expense();
+    this.getDizimo();
     this.getSaldo();
   }
 
   async getSaldo() {
     await this.dataLocal.calcSaldoExpenses();
-    this.saldo = this.dataLocal.saldo;
+    this.saldo = this.dataLocal.dizimo
+      ? this.dataLocal.saldo - this.dataLocal.dizimo
+      : this.dataLocal.saldo;
+  }
+
+  async getDizimo() {
+    await this.dataLocal.calcDizimo();
   }
 
   async onClickCategory() {
