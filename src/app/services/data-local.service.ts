@@ -12,6 +12,7 @@ export class DataLocalService {
   public groupCategoryValue: CategoryGroupValue[] = [];
   public lastExpenses: Expense[] = [];
   public saldo: Number = 0;
+  public dizimo: Number = 0;
 
   constructor(private storage: Storage) {
     this.initCategory();
@@ -78,18 +79,18 @@ export class DataLocalService {
 
     this.lastExpenses = [];
 
-    this.lastExpenses = this.expenses.sort((a: Expense, b: Expense) => {
-      const one = new Date(a.date);
-      const two = new Date(b.date);
-      return one > two ? -1 : one < two ? 1 : 0;
-    });
+    this.lastExpenses = this.expenses
+      .sort((a: Expense, b: Expense) => {
+        const one = new Date(a.date);
+        const two = new Date(b.date);
+        return one > two ? -1 : one < two ? 1 : 0;
+      })
+      .slice(0, 3);
   }
 
   // faz calculo do saldo de despesas
   async calcSaldoExpenses() {
     await this.initExpense();
-
-    console.log("saldo da conta", this.expenses);
 
     let saldo = this.expenses.reduce((saldo, expense) => {
       if (expense.category.type == "entrada") {
@@ -103,5 +104,20 @@ export class DataLocalService {
 
     console.log("saldo da conta", saldo);
     this.saldo = saldo;
+  }
+
+  //calcula o dizimo
+  async calcDizimo() {
+    await this.initExpense();
+
+    let dizimo = this.expenses.reduce((dizimo, expense) => {
+      if (expense.category.type == "entrada") {
+        dizimo = dizimo + (expense.value * expense.category.percentage) / 100;
+      }
+      return dizimo;
+    }, 0);
+
+    console.log("dizimo das entradas", dizimo);
+    this.dizimo = dizimo;
   }
 }

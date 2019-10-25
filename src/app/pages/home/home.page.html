@@ -50,6 +50,7 @@
               [ngStyle]="{ background: expense.category.color }"
             ></div>
             {{ expense.category.name }}
+            {{ expense.category.type == "entrada" ? "(E)" : "" }}
             <b>{{ expense.value | currency: "BRL":"R$":"1.2-2" }}</b>
           </span>
         </ion-col>
@@ -59,17 +60,17 @@
   <!-- fim -->
   <!-- dizimo devolvido -->
   <!-- card de ultimos lançamentos -->
-  <ion-card class="money-card-content" mode="md">
-    <ion-card-content class="content-money">
+  <ion-card *ngIf="dizimo" class="money-card-content" mode="md">
+    <ion-card-content class="content-money dizimo">
       <ion-row>
         <ion-col>
-          <ion-label>Dizímo</ion-label>
+          <ion-label class="home-title-dizimo">Dízimo</ion-label>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12">
           <div class="home-panel-dizimo">
-            R$250,00
+            {{ dizimo | currency: "BRL":"R$":"1.2-2" }}
           </div>
         </ion-col>
       </ion-row>
@@ -79,17 +80,22 @@
   <!-- fim -->
   <!-- card de ultimos lançamentos -->
   <ion-card class="money-card-content" mode="md">
-    <ion-card-content class="content-money">
+    <ion-card-content class="content-money last-expense">
       <ion-row>
         <ion-col>
-          <ion-label>Últimos lançamentos</ion-label>
+          <ion-label class="home-last-expense-title"
+            >Últimos lançamentos</ion-label
+          >
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <span>padaria R$10,00</span>
-          <span>mercado R$15,00</span>
-          <span>carro R$16,20</span>
+          <div class="list-table">
+            <span *ngFor="let expense of dataLocal.lastExpenses"
+              >{{ expense.category.name }}
+              {{ expense.value | currency: "BRL":"R$":"1.2-2" }}</span
+            >
+          </div>
         </ion-col>
       </ion-row>
     </ion-card-content>

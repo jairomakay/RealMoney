@@ -1,7 +1,7 @@
 .money-card {
   padding: 0 !important;
   margin: 0 !important;
-  min-height: 165px !important;
+  min-height: 133px !important;
   border-radius: 0 !important;
   z-index: 0;
 
@@ -34,6 +34,7 @@
   right: -13px;
   top: -43px;
 }
+
 .money-title {
   text-align: center !important;
   font-size: 18px !important;
@@ -42,6 +43,7 @@
 
 .content-money {
   text-align: center !important;
+  margin-top: -9px;
 }
 
 .content-money > span {
@@ -64,21 +66,22 @@
 .home-grafic {
   margin-top: -10px;
   margin-left: -10px;
-  
 }
 
 .home-category-names {
   display: flex;
   flex-direction: column;
 
-   margin-top: -40px;
+  margin-top: -40px;
+  margin-left: -14px;
 }
 
 .home-category-names > span {
   display: flex;
   flex-direction: row;
 
-  font-size: 14px;
+  font-size: 12px;
+  width: 170px;
   color: #fff;
 }
 
@@ -90,6 +93,79 @@
 }
 
 .home-category-names > span > b {
-  font-size: 14px;
+  font-size: 12px;
   margin-left: 5px;
+}
+
+.home-title-dizimo {
+  font-size: 19px;
+  color: #fff;
+}
+
+.home-panel-dizimo {
+  background: rgb(24, 153, 154);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 2%,
+    rgba(29, 94, 177, 1) 72%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 2%,
+    rgba(29, 94, 177, 1) 72%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 2%,
+    rgba(29, 94, 177, 1) 72%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#18999a",endColorstr="#1d5eb1",GradientType=1);
+  border-radius: 10px;
+  padding: 3px;
+  color: #fff;
+  font-size: 22px;
+  margin-top: -9px;
+}
+
+.dizimo {
+  margin-top: -17px;
+}
+
+.last-expense {
+  margin-top: -10px;
+}
+
+.home-last-expense-title {
+  font-size: 18px;
+  color: #fff;
+}
+
+.list-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-table > span {
+  background: rgb(24, 153, 154);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 2%,
+    rgba(29, 94, 177, 1) 72%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 2%,
+    rgba(29, 94, 177, 1) 72%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(24, 153, 154, 1) 2%,
+    rgba(29, 94, 177, 1) 72%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#18999a",endColorstr="#1d5eb1",GradientType=1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  color: #fff;
+  font-size: 18px;
 }

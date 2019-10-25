@@ -16,6 +16,8 @@ export class HomePage {
   doughnutChart: Chart;
   // saldo da conta
   saldo: Number;
+  // dizimo
+  dizimo: Number;
 
   constructor(
     private popoverCtl: PopoverController,
@@ -26,11 +28,18 @@ export class HomePage {
     this.listCategoryGroup();
     this.graficPizza();
     this.getSaldo();
+    this.getDizimo();
+    this.listExpensesLast();
   }
 
   async getSaldo() {
     await this.dataLocal.calcSaldoExpenses();
     this.saldo = this.dataLocal.saldo;
+  }
+
+  async getDizimo() {
+    await this.dataLocal.calcDizimo();
+    this.dizimo = this.dataLocal.dizimo;
   }
 
   async presentPopover(event) {
@@ -51,10 +60,16 @@ export class HomePage {
     await this.dataLocal.getCategoryByGroupSumValue();
 
     backgroundColor = this.dataLocal.groupCategoryValue.map(gc => {
+      if (gc.category.type === "entrada") {
+        return;
+      }
       return gc.category.color;
     });
 
     data = this.dataLocal.groupCategoryValue.map(gc => {
+      if (gc.category.type === "entrada") {
+        return;
+      }
       return gc.value;
     });
 
@@ -80,7 +95,8 @@ export class HomePage {
   }
 
   async listExpensesLast() {
-    await this.dataLocal.getExpenses();
-    console.log(this.dataLocal.expenses);
+    await this.dataLocal.getExpensesOrderDate();
+
+    console.log(this.dataLocal.lastExpenses);
   }
 }

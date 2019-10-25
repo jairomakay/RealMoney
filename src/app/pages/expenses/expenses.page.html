@@ -9,7 +9,7 @@
       <ion-col size="12">
         <div class="display-balance">
           <span>
-            R$2.064,35
+            {{ saldo | currency: "BRL":"R$":"1.2-2" }}
           </span>
         </div>
       </ion-col>
@@ -18,12 +18,17 @@
       <ion-col size="12">
         <div class="expense-input-around">
           <span>R$</span>
-          <ion-input class="expense-input" [(ngModel)]="value" type="tel" [brmasker]="{
+          <ion-input
+            class="expense-input"
+            [(ngModel)]="value"
+            type="tel"
+            [brmasker]="{
               money: true,
               thousand: '.',
               decimalCaracter: ',',
               decimal: '2'
-            }">
+            }"
+          >
           </ion-input>
         </div>
       </ion-col>
@@ -31,8 +36,14 @@
     <ion-row>
       <ion-col size="12">
         <div class="expense-input-around">
-          <ion-datetime class="expense-date" placeholder="Data da Despesa" [(ngModel)]="expense.date"
-            display-format="DD/MM/YYYY" cancelText="cancelar" doneText="adicionar">
+          <ion-datetime
+            class="expense-date"
+            placeholder="Data da Despesa"
+            [(ngModel)]="expense.date"
+            display-format="DD/MM/YYYY"
+            cancelText="cancelar"
+            doneText="adicionar"
+          >
           </ion-datetime>
         </div>
       </ion-col>
@@ -47,8 +58,11 @@
     <ion-row>
       <ion-col size="12">
         <div class="expense-category">
-          <ion-textarea class="expense-text-area" [(ngModel)]="expense.description"
-            placeholder="Digite um descrição..."></ion-textarea>
+          <ion-textarea
+            class="expense-text-area"
+            [(ngModel)]="expense.description"
+            placeholder="Digite um descrição..."
+          ></ion-textarea>
         </div>
       </ion-col>
     </ion-row>
@@ -59,17 +73,35 @@
         </ion-fab-button>
       </ion-col>
       <ion-col class="expense-actions" size="8">
-        <img *ngIf="expense.image" class="expense-image" [src]="expense.image" />
+        <img
+          *ngIf="expense.image"
+          class="expense-image"
+          [src]="expense.image"
+        />
       </ion-col>
     </ion-row>
   </ion-content>
 
   <ion-footer>
     <ion-toolbar color="primary">
-      <ion-button slot="start" shape="round" size="large" color="success" fill="outline" (click)="onClickSave()">
+      <ion-button
+        slot="start"
+        shape="round"
+        size="large"
+        color="success"
+        fill="outline"
+        (click)="onClickSave()"
+      >
         Adicionar
       </ion-button>
-      <ion-button size="large" shape="round" [routerLink]="['/home']" slot="end" color="light" fill="outline">
+      <ion-button
+        size="large"
+        shape="round"
+        [routerLink]="['/home']"
+        slot="end"
+        color="light"
+        fill="outline"
+      >
         Cancelar
       </ion-button>
     </ion-toolbar>
