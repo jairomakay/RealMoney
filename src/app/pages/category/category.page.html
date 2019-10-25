@@ -12,7 +12,12 @@
     <ion-row>
       <ion-col size="12">
         <div class="category-input-around">
-          <ion-input class="category-input" [(ngModel)]="category.name" type="text" placeholder="nome"></ion-input>
+          <ion-input
+            class="category-input"
+            [(ngModel)]="category.name"
+            type="text"
+            placeholder="nome"
+          ></ion-input>
         </div>
       </ion-col>
     </ion-row>
@@ -29,8 +34,13 @@
       <ion-list #theList inset="false" lines="full" class="noPadBottom">
         <ion-grid>
           <ion-row class="rowClass">
-            <ion-col size="2" class="colClass" *ngFor="let item of colorList; let i=index"
-              [style.background]="item.value" (click)="selectColor(item)">
+            <ion-col
+              size="2"
+              class="colClass"
+              *ngFor="let item of colorList; let i = index"
+              [style.background]="item.value"
+              (click)="selectColor(item)"
+            >
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -41,22 +51,40 @@
     <ion-row *ngIf="category.type === 'entrada'">
       <ion-col size="12">
         <div class="category-input-around">
-          <ion-input class="category-input" [(ngModel)]="category.percentage" type="tel"
-            placeholder="Porcentagem desconto"></ion-input>
+          <span>%</span>
+          <ion-input
+            class="category-input"
+            [(ngModel)]="category.percentage"
+            type="tel"
+            placeholder="Porcentagem desconto"
+          ></ion-input>
         </div>
       </ion-col>
     </ion-row>
     <!-- fim -->
     <ion-row class="ion-text-center">
-      <ion-radio-group style="margin-left: 30px; margin-top:10px" allow-empty-selection="true"
-        (ionSelect)="selectBalance($event)">
+      <ion-radio-group
+        style="margin-left: 30px; margin-top:10px"
+        allow-empty-selection="true"
+        (ionSelect)="selectBalance($event)"
+      >
         <ion-col style="margin-right: 8px" size="6">
           <ion-label style="margin-right: 8px">Entrada</ion-label>
-          <ion-radio color="light" name="balance" value="entrada" checked></ion-radio>
+          <ion-radio
+            color="light"
+            name="balance"
+            value="entrada"
+            checked
+          ></ion-radio>
         </ion-col>
         <ion-col size="6">
           <ion-label style="margin-right: 8px">Saída</ion-label>
-          <ion-radio color="light" name="balance" value="saida" checked></ion-radio>
+          <ion-radio
+            color="light"
+            name="balance"
+            value="saida"
+            checked
+          ></ion-radio>
         </ion-col>
       </ion-radio-group>
     </ion-row>
@@ -64,10 +92,24 @@
   <!-- fim -->
   <ion-footer>
     <ion-toolbar color="primary">
-      <ion-button slot="start" shape="round" size="large" color="success" fill="outline" (click)="onClickSave()">
+      <ion-button
+        slot="start"
+        shape="round"
+        size="large"
+        color="success"
+        fill="outline"
+        (click)="onClickSave()"
+      >
         Adicionar
       </ion-button>
-      <ion-button size="large" shape="round" [routerLink]="['/home']" slot="end" color="light" fill="outline">
+      <ion-button
+        size="large"
+        shape="round"
+        [routerLink]="['/home']"
+        slot="end"
+        color="light"
+        fill="outline"
+      >
         Cancelar
       </ion-button>
     </ion-toolbar>

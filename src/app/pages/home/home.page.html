@@ -6,14 +6,15 @@
           <ion-card-title class="money-title">Saldo Atual</ion-card-title>
         </ion-col>
         <ion-col>
-          <ion-icon
+          <ion-button
             (click)="presentPopover($event)"
             class="money-menu"
             size="large"
             color="light"
-            name="more"
+            fill="clear"
           >
-          </ion-icon>
+            <ion-icon slot="icon-only" name="more"></ion-icon>
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-card-header>

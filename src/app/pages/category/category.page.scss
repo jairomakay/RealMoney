@@ -1,7 +1,15 @@
-
 .category-input-around {
   margin: 5px 28px 5px 28px;
 }
+
+.category-input-around > span {
+  position: absolute;
+  margin-top: 11px;
+  z-index: 3;
+  margin-left: 5px;
+  font-size: 21px;
+}
+
 .category-input {
   border: 1px solid rgb(21, 33, 45) !important;
   border-radius: 10px !important;
@@ -22,12 +30,11 @@
   color: #969fa8;
 }
 
-
-ion-grid{
+ion-grid {
   --ion-grid-padding: 6px;
 }
 
-.noPadBottom{
+.noPadBottom {
   margin-bottom: 0px;
 }
 
@@ -41,7 +48,7 @@ ion-grid{
   padding: 6px;
 }
 
-.colClass{
+.colClass {
   border: 2px solid white;
   text-align: center;
   font-weight: bold;
@@ -50,7 +57,7 @@ ion-grid{
   transition: opacity, border 0.5s;
 }
 
-.colClass:hover{
+.colClass:hover {
   border: 1px solid black;
   opacity: 0.9;
   cursor: pointer;
