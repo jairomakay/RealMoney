@@ -3,6 +3,16 @@
     <ion-card-header>
       <ion-row>
         <ion-col size="12">
+          <div class="home-month-expense">
+            <ion-datetime
+              class="month-expense"
+              [(ngModel)]="monthExpense"
+              display-format="MMMM"
+              cancelText="cancelar"
+              doneText="adicionar"
+              (ionChange)="selectMonthExpense($event)"
+            ></ion-datetime>
+          </div>
           <ion-card-title class="money-title">Saldo Atual</ion-card-title>
         </ion-col>
         <ion-col>

@@ -11,8 +11,8 @@ export class DataLocalService {
   public expenses: Expense[] = [];
   public groupCategoryValue: CategoryGroupValue[] = [];
   public lastExpenses: Expense[] = [];
-  public saldo: Number = 0;
-  public dizimo: Number = 0;
+  public saldo: number = 0;
+  public dizimo: number = 0;
 
   constructor(private storage: Storage) {
     this.initCategory();

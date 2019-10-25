@@ -15,9 +15,10 @@ export class HomePage {
   // variavel dos charts
   doughnutChart: Chart;
   // saldo da conta
-  saldo: Number;
+  saldo: number;
   // dizimo
-  dizimo: Number;
+  dizimo: number;
+  monthExpense: Date;
 
   constructor(
     private popoverCtl: PopoverController,
@@ -25,16 +26,22 @@ export class HomePage {
   ) {}
 
   ionViewWillEnter() {
+    this.monthExpense = new Date();
+
     this.listCategoryGroup();
     this.graficPizza();
-    this.getSaldo();
+    // calcula primeiro o dízimo para adicionar no saldo
     this.getDizimo();
+    // subtrai o dízimo do saldo
+    this.getSaldo();
     this.listExpensesLast();
   }
 
   async getSaldo() {
     await this.dataLocal.calcSaldoExpenses();
-    this.saldo = this.dataLocal.saldo;
+    this.saldo = this.dizimo
+      ? this.dataLocal.saldo - this.dizimo
+      : this.dataLocal.saldo;
   }
 
   async getDizimo() {
@@ -88,6 +95,11 @@ export class HomePage {
       }
     });
   }
+  // evento ao selecionar o mês dos gastos
+  selectMonthExpense(event) {
+    let date: Date = event.detail.value;
+    console.log("data mês", date);
+  }
 
   // lista categoria agrupadas
   async listCategoryGroup() {
@@ -96,7 +108,5 @@ export class HomePage {
 
   async listExpensesLast() {
     await this.dataLocal.getExpensesOrderDate();
-
-    console.log(this.dataLocal.lastExpenses);
   }
 }
