@@ -40,22 +40,27 @@
   font-size: 17px !important;
   color: #fff !important;
   margin-bottom: -26px;
-  margin-top: 26px;
+  margin-top: 18px;
 }
 
 .home-month-expense {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: #fff;
   height: 5px;
 }
 
 .month-expense {
-  font-size: 19px;
-  margin-left: -14px;
-  text-decoration: underline;
+  font-size: 15px;
+  margin-left: -16px;
+  margin-top: -8px;
+  border: 1px solid #fff;
+  padding: 0px;
+  border-radius: 10px;
+  padding-left: 8px;
+  padding-right: 10px;
 }
 
 .content-money {

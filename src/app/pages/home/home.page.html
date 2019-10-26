@@ -6,15 +6,16 @@
           <div class="home-month-expense">
             <ion-datetime
               class="month-expense"
-              [(ngModel)]="monthExpense"
+              [value]="monthExpense"
               display-format="MMMM"
               month-names="Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outrubro, Novembro, Desembro"
               cancelText="cancelar"
               doneText="adicionar"
+              (ionBlur)="clickMonth()"
               (ionChange)="selectMonthExpense($event)"
             ></ion-datetime>
           </div>
-          <ion-card-title class="money-title">Saldo Atual</ion-card-title>
+          <ion-card-title class="money-title">Saldo</ion-card-title>
         </ion-col>
         <ion-col>
           <ion-button

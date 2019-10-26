@@ -47,7 +47,7 @@ export class DataLocalService {
   /*
     Retorna os gastos ordenados por categorias
   */
-  async getCategoryByGroupSumValue() {
+  async getCategoryByGroupSumValue(month?: number) {
     // carrega lista de despesas
     await this.initExpense();
     // novo array de grupos
@@ -62,11 +62,18 @@ export class DataLocalService {
       return m;
     }, {});
 
-    const result = Object.keys(reduced).map(k => {
+    let result: CategoryGroupValue[] = Object.keys(reduced).map(k => {
       return reduced[k];
     });
-
-    this.groupCategoryValue = result;
+    // se existir filtro por data retorna somente do mês
+    this.groupCategoryValue = month
+      ? result.filter(cat => {
+          console.log(cat.date);
+          const date: Date = new Date(cat.date);
+          const monthDB: number = date.getMonth() + 1;
+          return monthDB === month;
+        })
+      : result;
   }
 
   async getExpenses() {
@@ -102,7 +109,6 @@ export class DataLocalService {
       return saldo;
     }, 0);
 
-    console.log("saldo da conta", saldo);
     this.saldo = saldo;
   }
 
@@ -117,7 +123,6 @@ export class DataLocalService {
       return dizimo;
     }, 0);
 
-    console.log("dizimo das entradas", dizimo);
     this.dizimo = dizimo;
   }
 }
