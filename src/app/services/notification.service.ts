@@ -19,10 +19,11 @@ export class NotificationService {
     });
   }
 
-  scheduleNotification(delay: number) {
+  scheduleNotification(title: string, text: string, delay: number) {
     this.localNotification.schedule({
-      title: "Aviso de contas que irão vencer :(",
-      text: "4:15 - 5:15 PM\nBig Conference Room",
+      id: new Date().getTime(),
+      title,
+      text,
       smallIcon: "res://calendar",
       trigger: { at: new Date(new Date().getTime() + delay) }
     });

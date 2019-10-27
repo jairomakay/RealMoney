@@ -88,6 +88,23 @@
         </ion-col>
       </ion-radio-group>
     </ion-row>
+    <ion-row class="category-list">
+      <ion-col size="12">
+        <ion-list mode="ios" inset="true" lines="inset" class="bg-transparent ">
+          <ion-item-sliding *ngFor="let category of listCategory">
+            <ion-item color="dark">
+              <ion-label>{{ category.name }}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="onClickDelete(category)"
+                >excluir</ion-item-option
+              >
+            </ion-item-options>
+            <div class="historic-separator"></div>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
   </ion-content>
   <!-- fim -->
   <ion-footer>
@@ -95,7 +112,6 @@
       <ion-button
         slot="start"
         shape="round"
-        size="large"
         color="success"
         fill="outline"
         (click)="onClickSave()"
@@ -103,7 +119,6 @@
         Adicionar
       </ion-button>
       <ion-button
-        size="large"
         shape="round"
         [routerLink]="['/home']"
         slot="end"

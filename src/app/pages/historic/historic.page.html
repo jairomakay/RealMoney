@@ -1,9 +1,60 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>historic</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>
+        Histórico das Despesas
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-
-</ion-content>
+  <!-- conteudo histórico-->
+  <ion-content color="dark">
+    <ion-row>
+      <ion-col size="12">
+        <ion-datetime
+          class="expense-date"
+          placeholder="Pesquisa por data"
+          [(ngModel)]="date"
+          display-format="MM/YYYY"
+          cancelText="cancelar"
+          doneText="adicionar"
+          (ionChange)="selectDate($event)"
+        ></ion-datetime>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-list mode="ios" inset="true" lines="inset" class="bg-transparent">
+          <ion-item-sliding *ngFor="let expense of listHistoric">
+            <ion-item color="dark">
+              <ion-label slot="start">{{ expense.category.name }} </ion-label>
+              <ion-label slot="end" class="label-price">{{
+                expense.value | currency: "BRL":"R$":"1.2-2"
+              }}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="onClickDelete(expense)"
+                >excluir</ion-item-option
+              >
+            </ion-item-options>
+            <div class="historic-separator"></div>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <!-- fim -->
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar color="primary">
+      <ion-button
+        shape="round"
+        [routerLink]="['/home']"
+        slot="end"
+        color="light"
+        fill="outline"
+      >
+        Cancelar
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-app>

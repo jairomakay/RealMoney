@@ -11,6 +11,7 @@ export class DataLocalService {
   public expenses: Expense[] = [];
   public groupCategoryValue: CategoryGroupValue[] = [];
   public lastExpenses: Expense[] = [];
+  public listHistoricExpenses: Expense[] = [];
   public saldo: number = 0;
   public dizimo: number = 0;
 
@@ -25,6 +26,22 @@ export class DataLocalService {
 
   async initExpense() {
     this.expenses = (await this.storage.get("expenses")) || [];
+  }
+
+  deleteCategory(category: Category) {
+    let categorys = this.categorys.filter(cat => {
+      return cat.name !== category.name;
+    });
+    console.log(categorys);
+    this.storage.set("categorys", categorys);
+  }
+
+  deleteExpense(expense: Expense) {
+    let expenses = this.expenses.filter(exp => {
+      return expense !== exp;
+    });
+    console.log(expenses);
+    this.storage.set("expenses", expenses);
   }
 
   saveCategory(category: Category) {
@@ -93,6 +110,33 @@ export class DataLocalService {
         return one > two ? -1 : one < two ? 1 : 0;
       })
       .slice(0, 3);
+  }
+  // lista hsitorico de despesas por data
+  async getHistoricExpenses(date: Date) {
+    // carrega lista de despesas
+    await this.initExpense();
+    this.listHistoricExpenses = [];
+
+    let listHistoricExpenses = this.expenses.filter(expense => {
+      let paramDate = new Date(date);
+      let dateDB = new Date(expense.date);
+      //pega mês corretamente
+      const monthParam = paramDate.getMonth() + 1;
+      const monthDB = dateDB.getMonth() + 1;
+      //pega ano
+      const yearParam = paramDate.getFullYear();
+      const yearDB = dateDB.getFullYear();
+
+      return monthDB == monthParam && yearDB == yearParam;
+    });
+
+    this.listHistoricExpenses = listHistoricExpenses.sort(
+      (a: Expense, b: Expense) => {
+        const one = new Date(a.date);
+        const two = new Date(b.date);
+        return one > two ? -1 : one < two ? 1 : 0;
+      }
+    );
   }
 
   // faz calculo do saldo de despesas

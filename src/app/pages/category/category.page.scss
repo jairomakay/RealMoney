@@ -63,3 +63,15 @@ ion-grid {
   cursor: pointer;
   transition: opacity, border 0.5s;
 }
+
+.category-list {
+  margin: 10px 10px;
+}
+
+.bg-transparent {
+  background: transparent;
+}
+
+.historic-separator {
+  border-top: 2px solid #ccc;
+}
