@@ -4,6 +4,7 @@ import { PopoverComponent } from "src/app/components/popover/popover.component";
 
 import { Chart } from "chart.js";
 import { DataLocalService } from "../../services/data-local.service";
+import { NotificationService } from "../../services/notification.service";
 
 @Component({
   selector: "app-home",
@@ -24,7 +25,8 @@ export class HomePage implements OnInit {
   constructor(
     private popoverCtl: PopoverController,
     public dataLocal: DataLocalService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private localNotifi: NotificationService
   ) {}
 
   ngOnInit() {}

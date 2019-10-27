@@ -18,6 +18,8 @@ import { SQLitePorter } from "@ionic-native/sqlite-porter/ngx";
 import { SQLite } from "@ionic-native/sqlite/ngx";
 // camera
 import { Camera } from "@ionic-native/camera/ngx";
+// lotificações locais
+import { LocalNotifications } from "@ionic-native/local-notifications/ngx";
 
 import localept from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
@@ -40,6 +42,7 @@ registerLocaleData(localept, "pt");
     SQLitePorter,
     SQLite,
     Camera,
+    LocalNotifications,
     { provide: LOCALE_ID, useValue: "pt" },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
